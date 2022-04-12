@@ -4,7 +4,7 @@ import axios from "axios";
 const PersonForm = () => {
     const [message, setMessage] = useState('Loading...');
     const [firstName, setFirstName] = useState('');
-    const [lastname, setLastName] = useState('');
+    const [lastName, setLastName] = useState('');
     useEffect(()=>{
         axios.get('http://localhost:8000/api')
             .then(res=>setMessage(res.data.message))
@@ -15,7 +15,7 @@ const PersonForm = () => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/people', {
             firstName,
-            lastname
+            lastName
         })
         .then(res=>{
             console.log(res);
@@ -33,7 +33,7 @@ const PersonForm = () => {
                 <label>Last Name</label>
                 <input type='text' onChange = {(e)=> setLastName(e.target.value)}></input>
             </p>
-            <button type="submit"></button>
+            <button type="submit">submit</button>
         </form>
     )
 }
